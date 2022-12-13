@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <style>
+        body{
+            font-family: "Trirong", serif;
+            background-image: url(background.jpg);
+            animation-name: colors;
+            animation-duration: 5s;
+
+        }
+
+        @keyframes colors {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+        .container{
+            background-color: antiquewhite;
+            height: 20em;
+            width: 40em;
+            padding-top:40px;
+            text-align: center;
+            margin: auto;
+            border-radius: 5px;
+        }
+        .container h4{
+            background-color: aliceblue;
+            height: 36px;
+            width: 56px;
+            padding: 4px;
+            margin: auto;
+            border-radius: 8px;
+        }
+
+        #myfile{
+            margin-top: 20px;
+        }
+
+        .container p{
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Click photo and then upload OR choose from device</p>
+        
+        <!-- <input type="image" id="img" autoplay="autoplay"> -->
+        <input type="file" id="myfile" name="filename" >
+        <input type="submit"><br><br>
+        <!-- <button id="button" onclick="stream()">Take photo</button> -->
+        
+    </div>
+    
+    <video id="video" autoplay="autoplay"></video>
+    <picture id="picture"></picture>
+
+      <script>
+        var video = document.getElementById("video");
+        var pic = document.getElementById("picture")
+        navigator.mediaDevices.getUserMedia({video:true,audio:true,picture:true}).then(function(stream){
+            video.srcObject = stream;
+            picture.srcObject = stream;
+        })  
+    </script> 
+</body>
+</html>
